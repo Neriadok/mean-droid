@@ -31,7 +31,7 @@ exports.config = {
             './steps/**/*.steps.ts'
         ],
         // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        tags: [],
+        tags: ['not(@techdebt) and not(@todo) and not(@native)'],
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)

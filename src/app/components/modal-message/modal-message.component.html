@@ -1,0 +1,9 @@
+<div class="modal-overlay animated fadeIn" (click)="close()"></div>
+<div class="card modal-content animated bounceIn">
+    <p> {{message}} </p>
+    <nav>
+        <div *ngFor="let action of actions">
+            <button [id]="action.id" (click)="runActionMethod(action.method)"> {{action.text}} </button>
+        </div>
+    </nav>
+</div>

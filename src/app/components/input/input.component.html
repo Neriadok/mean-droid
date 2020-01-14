@@ -1,0 +1,32 @@
+<div [id]="(definition.id || definition.key) + '-container'"
+     class="input-container"
+     [ngSwitch]="definition.type"
+     [style]="definition.containerStyle"
+     [formGroup]="form">
+    <label *ngIf="definition.label"
+           [for]="definition.id || definition.key"
+           [style]="definition.labelStyle"
+            [ngClass]="{'text-danger': !isValid()}">
+        {{definition.label | translate}}
+    </label>
+    <input *ngSwitchDefault
+           [id]="definition.id || definition.key"
+           [formControlName]="definition.key"
+           [style]="definition.style"
+           [type]="definition.type"
+           placeholder="{{definition.label | translate}}">
+
+    <textarea *ngSwitchCase="'textarea'"
+              [id]="definition.id || definition.key"
+              [formControlName]="definition.key"
+              [style]="definition.style"></textarea>
+
+    <select *ngSwitchCase="'select'"
+            [id]="definition.id || definition.key"
+            [formControlName]="definition.key"
+            [style]="definition.style">
+        <option [id]="option.key" *ngFor="let option of definition.options" [value]="option.value || option.key">
+            {{(option.label || option.key) | translate}}
+        </option>
+    </select>
+</div>

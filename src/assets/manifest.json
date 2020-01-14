@@ -1,0 +1,11 @@
+{
+  "short_name": "MeanDroid",
+  "name": "MeanDroid",
+  "start_url": ".",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#fafafa",
+  "theme_color":"#fafafa",
+  "description": "MEAN - Angular - Cordova - Development",
+  "icons": []
+}

@@ -1,0 +1,9 @@
+@import "../../../styles.conf";
+:host{
+  display: flex;
+  flex-direction: column;
+
+  .card{
+    flex: 1;
+  }
+}

@@ -1,0 +1,37 @@
+#Angular
+node_modules
+dist
+coverage
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+**/*.log
+/typings
+
+# IDE - VSCode
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+#Base
+/storage
+/src/environments/environment.ts
+
+#Cordova
+/www
+/platforms
+/plugins
+
+/generators/**/*.js
+/generators/**/*.js.map

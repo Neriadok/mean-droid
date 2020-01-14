@@ -1,0 +1,37 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "generator": {
+      "description": "A new generator",
+      "factory": "./generator"
+    },
+    "component": {
+      "description": "A new component",
+      "factory": "./component"
+    },
+    "page": {
+      "description": "A new page",
+      "factory": "./page"
+    },
+    "endpoint": {
+      "description": "A new endpoint",
+      "factory": "./endpoint"
+    },
+    "guard": {
+      "description": "A new guard",
+      "factory": "./guard"
+    },
+    "model": {
+      "description": "A new model",
+      "factory": "./model"
+    },
+    "service": {
+      "description": "A new service",
+      "factory": "./service"
+    },
+    "strategy": {
+      "description": "A new strategy",
+      "factory": "./strategy"
+    }
+  }
+}

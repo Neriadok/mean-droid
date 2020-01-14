@@ -1,0 +1,20 @@
+{
+  "login": "acceso",
+  "register": "registro",
+  "logout": "salir",
+  "email": "email",
+  "password": "contraseña",
+  "serverResponse":{
+    "ok": "petición completa",
+    "empty" : "respuesta vacía",
+    "ko": "petición fallida",
+    "unauthorized": "identificación necesaria",
+    "needPay": "pago necesario",
+    "forbidden": "sin permiso",
+    "notFound": "sin resultados",
+    "conflict": "conflicto",
+    "unsupportedMedia": "medio no soportado",
+    "teaPot": "soy una tetera",
+    "serverError": "error de servidor"
+  }
+}

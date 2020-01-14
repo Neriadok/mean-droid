@@ -1,0 +1,66 @@
+@import "~animate.css";
+@import "styles.conf";
+*{
+  font-family: $fontMain;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: $colorLight;
+  text-align: center;
+}
+
+.text-enfasis{
+  color:$colorEnfasis;
+}
+
+.text-success{
+  color:$colorSuccess;
+}
+
+.text-warning{
+  color:$colorWarning;
+}
+
+.text-danger{
+  color:$colorDanger;
+}
+
+.card{
+  background-color:$colorLightest;
+  box-shadow: 2px 2px 5px 2px transparentize($colorMidDark, 0.5);
+  color:$colorDark;
+  padding: 15px;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
+
+
+button, input[type="button"]{
+  background-color: $colorDark;
+  box-shadow: 1px 1px 3px 1px transparentize($colorMidDark, 0.5);
+  color: $colorLight;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  outline: none !important;
+  &.enfasis{
+    background-color:$colorEnfasis;
+  }
+  &.success{
+    background-color:$colorSuccess;
+  }
+  &.warning{
+    background-color:$colorWarning;
+  }
+  &.danger{
+    background-color:$colorDanger;
+  }
+  &:hover{
+    box-shadow: none;
+  }
+  &:active{
+    box-shadow: none;
+  }
+}

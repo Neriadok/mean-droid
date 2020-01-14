@@ -1,0 +1,11 @@
+@import "../styles.conf";
+
+:host{
+  position:absolute;
+  top:0;
+  left:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+  height:100%;
+  width:100%;
+}

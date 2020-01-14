@@ -1,0 +1,35 @@
+@import "../../../styles.conf";
+
+:host{
+  z-index: 100;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparentize($colorShadowest,.45);
+    padding: 40px;
+  }
+
+  .modal-content{
+    text-align: center;
+    border:5px solid $colorEnfasis;
+    border-radius: 20px;
+    width: calc(100% - 80px);
+    margin: 40px auto;
+    max-height: calc(100% - 80px);
+
+    nav{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

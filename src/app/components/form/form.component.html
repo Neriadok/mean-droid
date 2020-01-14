@@ -1,0 +1,10 @@
+
+<form [formGroup]="form" [id]="definition.key">
+    <h3>
+        {{definition.title | translate}}
+    </h3>
+    <app-input *ngFor="let input of definition.inputs" [definition]="input" [form]="form"></app-input>
+    <ng-content></ng-content>
+    <h5 *ngIf="error" class="text-danger">{{error | translate}}</h5>
+    <app-action-button *ngFor="let action of definition.actions" [definition]="action" [args]="form"></app-action-button>
+</form>

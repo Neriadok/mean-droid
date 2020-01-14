@@ -1,0 +1,20 @@
+{
+  "login": "login",
+  "register": "register",
+  "logout": "logout",
+  "email": "email",
+  "password": "password",
+  "serverResponse": {
+    "ok": "successfull response",
+    "empty" : "empty response",
+    "ko": "wrong response",
+    "unauthorized": "required authorization",
+    "needPay": "needPay",
+    "forbidden": "forbidden access",
+    "notFound": "no results",
+    "conflict": "conflict",
+    "unsupportedMedia": "unsupportedMedia",
+    "teaPot": "i'm a tea pot",
+    "serverError": "server error"
+  }
+}

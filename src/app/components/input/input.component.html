@@ -3,30 +3,71 @@
      [ngSwitch]="definition.type"
      [style]="definition.containerStyle"
      [formGroup]="form">
-    <label *ngIf="definition.label"
+    <label *ngIf="definition.label && definition.type !== 'file'"
            [for]="definition.id || definition.key"
            [style]="definition.labelStyle"
-            [ngClass]="{'text-danger': !isValid()}">
+           [ngClass]="{'text-warning': !isValid()}">
         {{definition.label | translate}}
     </label>
+    <label *ngIf="definition.icon && definition.type !== 'file'"
+           [for]="definition.id || definition.key"
+           [style]="definition.labelStyle"
+           [ngClass]="{'text-warning': !isValid()}">
+        <i [class]="'icon icon-' + definition.icon"></i>
+    </label>
     <input *ngSwitchDefault
+           [type]="definition.type"
            [id]="definition.id || definition.key"
            [formControlName]="definition.key"
            [style]="definition.style"
-           [type]="definition.type"
-           placeholder="{{definition.label | translate}}">
+           [max]="definition.max"
+           [min]="definition.min"
+           [step]="definition.step"
+           [ngClass]="definition.classes || []"
+           placeholder="{{(definition.placeholder || definition.label) | translate}}">
 
     <textarea *ngSwitchCase="'textarea'"
               [id]="definition.id || definition.key"
               [formControlName]="definition.key"
-              [style]="definition.style"></textarea>
+              [style]="definition.style"
+              [maxLength]="definition.maxLength"
+              [minLength]="definition.minLength"
+              [ngClass]="definition.classes || []"
+              placeholder="{{(definition.placeholder || definition.label) | translate}}"></textarea>
 
     <select *ngSwitchCase="'select'"
             [id]="definition.id || definition.key"
             [formControlName]="definition.key"
-            [style]="definition.style">
-        <option [id]="option.key" *ngFor="let option of definition.options" [value]="option.value || option.key">
-            {{(option.label || option.key) | translate}}
+            [style]="definition.style"
+            [ngClass]="definition.classes || []">
+        <option [id]=" definition.key + '-' + option.key" *ngFor="let option of definition.options" [value]="isUnset(option.value) ? option.key : option.value">
+            {{(isUnset(option.label) ? option.key : option.label) | translate}}
         </option>
     </select>
+
+    <select *ngSwitchCase="'multi-select'"
+            [id]="definition.id || definition.key"
+            [formControlName]="definition.key"
+            [style]="definition.style"
+            [ngClass]="definition.classes || []"
+            multiple>
+        <option [id]=" definition.key + '-' + option.key" *ngFor="let option of definition.options" [value]="isUnset(option.value) ? option.key : option.value">
+            {{(isUnset(option.label) ? option.key : option.label) | translate}}
+        </option>
+    </select>
+
+    <div *ngSwitchCase="'file'">
+        <label [for]="definition.id || definition.key"
+               [style]="definition.labelStyle"
+               class="button button-icon file"
+               [ngClass]="(definition.classes || []).concat(['button', 'button-icon', 'file'])">
+            <i [class]="'icon icon-' + definition.icon"></i>
+        </label>
+        <input [id]="definition.id || definition.key"
+               [formControlName]="definition.key"
+               [accept]="definition.accept"
+               type="file"
+               style="display: none"
+               placeholder="{{(definition.placeholder || definition.label) | translate}}">
+    </div>
 </div>

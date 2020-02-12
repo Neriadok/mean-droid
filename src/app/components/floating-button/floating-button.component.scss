@@ -1,0 +1,19 @@
+@import "../../../styles/styles.conf";
+
+:host{
+  position: fixed;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+
+  &[horizontal="left"]{
+    left: 0;
+  }
+
+  &[vertical="top"]{
+    top: 0;
+  }
+}

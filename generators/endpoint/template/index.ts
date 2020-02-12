@@ -1,21 +1,18 @@
-import {status} from '../../../src/configuration';
+import {deleteModel, getModel, postModel, putModel} from "../../database";
+import {<%= classify(name) %>Model} from "../../database/models/<%= dasherize(name) %>";
 
-export function getMethod(req, res) {
-  res.sendStatus(status.empty);
+export async function getMethod(req, res) {
+  await getModel(<%= classify(name) %>Model, req, res);
 }
 
-export function postMethod(req, res) {
-  res.sendStatus(status.empty);
+export async function postMethod(req, res) {
+  await postModel(<%= classify(name) %>Model, req, res);
 }
 
-export function putMethod(req, res) {
-  res.sendStatus(status.empty);
+export async function putMethod(req, res) {
+  await putModel(<%= classify(name) %>Model, req, res);
 }
 
-export function patchMethod(req, res) {
-  res.sendStatus(status.empty);
-}
-
-export function deleteMethod(req, res) {
-  res.sendStatus(status.empty);
+export async function deleteMethod(req, res) {
+  await deleteModel(<%= classify(name) %>Model, req, res);
 }

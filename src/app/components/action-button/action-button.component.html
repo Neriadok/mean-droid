@@ -1,3 +1,8 @@
-<button [id]="definition.key" [class]="definition.type" (click)="launchAction()">
+<button
+        [id]="definition.key"
+        [class]="definition.type"
+        [ngClass]="classes"
+        (click)="launchAction()">
     {{definition.label | translate}}
+    <i *ngIf="definition.icon" class="icon" [ngClass]="['icon-' + definition.icon]"></i>
 </button>

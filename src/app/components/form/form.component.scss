@@ -1,5 +1,28 @@
-@import "../../../styles.conf";
+@import "../../../styles/styles.conf";
 
 :host{
   // component style
+  fieldset{
+    border: 1px solid $colorDarkMid;
+    background-color: $colorDarkest;
+    margin: 10px;
+    border-radius: 5px;
+    transition: all 500ms;
+
+    legend{
+      top: 15px;
+      line-height: 20px;
+      position: relative;
+      border-radius: 0 0 5px 5px;
+      background: $colorDarkMid;
+      border: 5px solid $colorDarkMid;
+    }
+
+    &.hidden-section{
+      background-color: $colorDarkMid;
+      .fields{
+        display: none;
+      }
+    }
+  }
 }

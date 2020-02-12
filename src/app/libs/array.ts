@@ -1,38 +1,9 @@
-export function sortAlphabetically(list, property) {
+export function sortAlphabetically(list, property?) {
   return list.sort((a, b) => isHighier(a, b, property) ? 1 : -1);
 }
 
-function isHighier(a, b, property) {
+function isHighier(a, b, property?) {
   return property ? a[property] > b[property] : a > b;
-}
-
-export function setFormList (element, keyRegExp) {
-  Object.keys(element)
-    .filter((key) => keyRegExp.test(key))
-    .forEach((key) => {
-      const [list, index, value] = key.split('.');
-      if (!element[list]) element[list] = [];
-      if (!element[list][index]) element[list][index] = {};
-      element[list][index][value] = element[key];
-    });
-
-  return element;
-}
-
-export function setFormSubproperty (element, keyRegExp) {
-  Object.keys(element)
-    .filter((key) => keyRegExp.test(key))
-    .forEach((key) => {
-      const [property, value] = key.split('.');
-      if (!element[property]) element[property] = {};
-      element[property][value] = element[key];
-    });
-
-  return element;
-}
-
-export function sortRandomly () {
-  return Math.random() - 0.5;
 }
 
 export function isNotRepeated(target, index, list, property?) {
@@ -44,4 +15,28 @@ export function isNotRepeated(target, index, list, property?) {
 export function isSame (element1, element2, property?) {
   return property ? element1[property] === element2[property]
      : element1 === element2;
+}
+
+export function match(given, expected, property?) {
+  return property
+      ? matchProperty(given, expected, property)
+      : Object.keys(expected).every((expectedProperty) => matchProperty(given, expected, expectedProperty));
+}
+
+export function matchProperty(given, expected, property): boolean {
+  return isSame(given, expected, property)
+      || matchInOptions(given, expected, property)
+      || matchRegExp(given, expected, property);
+}
+
+export function matchInOptions(given, expected, property): boolean {
+  return Array.isArray(expected[property])
+      ? expected[property].includes(given[property])
+      : false;
+}
+
+export function matchRegExp(given, expected, property): boolean {
+  return Object.keys(expected).includes('$regex')
+      ? given[property].match(expected[property].$regex)
+      : false;
 }

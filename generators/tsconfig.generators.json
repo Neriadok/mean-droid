@@ -13,7 +13,7 @@
     "./**/*.ts"
   ],
   "exclude": [
-    "./**/template/*.ts",
+    "./**/template/**/*.ts",
     "./**/*.spec.ts"
   ]
 }

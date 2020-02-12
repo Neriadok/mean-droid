@@ -1,7 +1,7 @@
-import {equal} from "assert";
-import * as fetch from "node-fetch"
-import {status} from "../../../src/configuration";
-import {getFakeUserData, getRegistratedUserData} from "../test";
+import {equal} from 'assert';
+import * as fetch from 'node-fetch';
+import {status} from '../../../src/configuration';
+import {getFakeUserData, getRegistratedUserData} from '../test-utils';
 
 const endpoint = 'http://localhost/api/user';
 
@@ -12,9 +12,9 @@ describe('User endpoint', () => {
   });
 });
 
-async function assertUserRegistration(){
+async function assertUserRegistration() {
   const user = getFakeUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(user),
     headers: { 'Content-Type': 'application/json' },
@@ -27,9 +27,9 @@ async function assertUserRegistration(){
   expect(body).toHaveProperty('token');
 }
 
-async function assertEmailRepeatError(){
+async function assertEmailRepeatError() {
   const user = await getRegistratedUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(user),
     headers: { 'Content-Type': 'application/json' },

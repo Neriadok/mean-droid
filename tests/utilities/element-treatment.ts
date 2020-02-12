@@ -28,3 +28,13 @@ export async function waitForElementDisplayed(locator: string, timeout: timeouts
   );
   return element;
 }
+
+export async function clickElement(locator: string, timeout: timeouts = timeouts.xs): Promise<void> {
+  const element = await waitForElementDisplayed(locator, timeout);
+  await element.click();
+}
+
+export async function fillElement(locator: string, value: string | number, timeout: timeouts = timeouts.xs): Promise<void> {
+  const element = await waitForElementDisplayed(locator, timeout);
+  await element.sendKeys(value);
+}

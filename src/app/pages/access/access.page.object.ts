@@ -1,7 +1,7 @@
 import {browser} from 'protractor';
 import {PageObject} from '../../../../tests/utilities/page-object';
-import {internet} from 'faker'
-import {getElement, waitForElement} from "../../../../tests/utilities/element-treatment";
+import {internet} from 'faker';
+import {getElement, waitForElement} from '../../../../tests/utilities/element-treatment';
 
 
 export class AccessPageObject extends PageObject {

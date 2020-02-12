@@ -1,9 +1,10 @@
 import {assertGeneration} from "../generators.utils";
 
-describe('strategy', () => {
+describe('feature', () => {
     it('works', async () => {
-        await assertGeneration('strategy', {name: 'name'}, [
-            '/server/auth/strategies/name.ts'
+        await assertGeneration('feature', {name: 'name'}, [
+            '/tests/features/name.feature',
+            '/tests/steps/name.steps.ts',
         ]);
     });
 });

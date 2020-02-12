@@ -1,6 +1,6 @@
 {
   "name": "mean-droid",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "tools": "ts-node tools",
@@ -9,25 +9,29 @@
     "build": "ng build",
     "platform:android": "cordova platform add android",
     "build:android": "cordova build android",
+    "run:android": "cordova run android",
     "serve": "nodemon server/index.ts --PORT=80",
     "test:code": "jest",
     "test:features": "protractor ./tests/protractor.conf.js",
+    "test:feature": "protractor ./tests/protractor.conf.js --cucumberOpts.tags",
     "generate:build": "tsc -p ./generators/tsconfig.generators.json",
     "generate:generator": "ng g ./generators/collection.json:generator --name",
     "generate:component": "ng g ./generators/collection.json:component --name",
     "generate:page": "ng g ./generators/collection.json:page --name",
+    "generate:pipe": "ng g ./generators/collection.json:pipe --name",
     "generate:service": "ng g ./generators/collection.json:service --name",
     "generate:guard": "ng g ./generators/collection.json:guard --name",
     "generate:model": "ng g ./generators/collection.json:model --name",
     "generate:endpoint": "ng g ./generators/collection.json:endpoint --name",
-    "generate:strategy": "ng g ./generators/collection.json:strategy --name"
+    "generate:strategy": "ng g ./generators/collection.json:strategy --name",
+    "generate:feature": "ng g ./generators/collection.json:feature --name"
   },
   "private": true,
   "schematics": "./tools/generators/collection.json",
   "husky": {
     "hooks": {
-      "pre-commit": "",
-      "pre-push": ""
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn test:code"
     }
   },
   "jest": {
@@ -77,14 +81,13 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cordova": "^9.0.0",
-    "cordova-android": "^8.0.0",
+    "cordova-android": "^8.1.0",
     "core-js": "^2.4.1",
-    "csvtojson": "^2.0.6",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
     "forever": "^0.15.3",
-    "fs-extra": "^8.0.1",
+    "fs-extra": "^8.1.0",
     "glob": "^7.1.2",
     "js-sha256": "^0.9.0",
     "jsonwebtoken": "^8.3.0",
@@ -124,7 +127,6 @@
     "jest-preset-angular": "^8.0.0",
     "protractor": "~5.4.0",
     "protractor-cucumber-framework": "^4.2.0",
-    "puppeteer": "^1.5.0",
     "ts-mockery": "^1.2.0",
     "ts-node": "^8.5.4",
     "tslint": "5.20.1",

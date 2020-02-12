@@ -1,7 +1,7 @@
 import * as fetch from 'node-fetch';
-import {getRegistratedUserData} from "../test";
-import {equal} from "assert";
-import {status} from "../../../src/configuration";
+import {getRegistratedUserData} from '../test-utils';
+import {equal} from 'assert';
+import {status} from '../../../src/configuration';
 
 const endpoint = 'http://localhost/api/session';
 
@@ -18,7 +18,7 @@ describe('Session endpoint', () => {
 
 async function assertSessionRefresh() {
   const user = await getRegistratedUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'GET',
     params: JSON.stringify(user),
     headers: {
@@ -34,7 +34,7 @@ async function assertSessionRefresh() {
 
 async function assertLoginWithMail() {
   const user = await getRegistratedUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(user),
     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +49,7 @@ async function assertLoginWithMail() {
 
 async function assertWrongPasswordLogin() {
   const user = await getRegistratedUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({...user, password: 'wrong'}),
     headers: { 'Content-Type': 'application/json' },
@@ -59,7 +59,7 @@ async function assertWrongPasswordLogin() {
 
 async function assertWrongEmailLogin() {
   const user = await getRegistratedUserData();
-  const response = await fetch(endpoint,{
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({...user, email: 'wrong'}),
     headers: { 'Content-Type': 'application/json' },

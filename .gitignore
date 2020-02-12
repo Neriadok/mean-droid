@@ -26,7 +26,6 @@ coverage
 
 #Base
 /storage
-/src/environments/environment.ts
 
 #Cordova
 /www

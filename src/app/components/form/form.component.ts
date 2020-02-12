@@ -3,11 +3,16 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {InputComponentDefinition} from '../input/input.component';
 import {ActionButtonComponentDefinition} from '../action-button/action-button.component';
 
-export interface FormComponentDefinition {
+export interface InputGroup {
     key: string;
     title?: string;
     inputs: Array<InputComponentDefinition>;
-    actions: Array<ActionButtonComponentDefinition>;
+    actions?: Array<ActionButtonComponentDefinition>;
+}
+
+
+export interface FormComponentDefinition  extends InputGroup {
+    sections?: Array<InputGroup>;
 }
 
 @Component({
@@ -19,13 +24,31 @@ export class FormComponent implements OnChanges {
     @Input() definition: FormComponentDefinition;
     @Input() error: string;
     public form: FormGroup;
+    private openedSections: Array<string> = [];
 
     ngOnChanges() {
-        this.form = new FormGroup(this.getFormControls());
+        this.form = this.definition ? new FormGroup(this.getFormControls()) : null;
     }
 
     getFormControls() {
-        return this.definition.inputs.reduce(this.intoFormControls, {});
+        const inputs = (this.definition.sections || []).reduce(this.intoFormInputs, this.definition.inputs);
+        return inputs.reduce(this.intoFormControls, {});
+    }
+
+    public openSection(section: string) {
+        if (this.isOpenSection(section)) {
+            this.openedSections = this.openedSections.filter((opened) => opened !== section);
+        } else {
+            this.openedSections = [...this.openedSections, section];
+        }
+    }
+
+    public isOpenSection(section: string): boolean {
+        return this.openedSections.includes(section);
+    }
+
+    private intoFormInputs(formInputs, {inputs}: InputGroup) {
+        return [...formInputs, ...inputs];
     }
 
     private intoFormControls(group, input: InputComponentDefinition) {

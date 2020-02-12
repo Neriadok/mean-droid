@@ -17,6 +17,10 @@
       "description": "A new endpoint",
       "factory": "./endpoint"
     },
+    "feature": {
+      "description": "A new feature",
+      "factory": "./feature"
+    },
     "guard": {
       "description": "A new guard",
       "factory": "./guard"
@@ -28,6 +32,10 @@
     "service": {
       "description": "A new service",
       "factory": "./service"
+    },
+    "pipe": {
+      "description": "A new pipe",
+      "factory": "./pipe"
     },
     "strategy": {
       "description": "A new strategy",

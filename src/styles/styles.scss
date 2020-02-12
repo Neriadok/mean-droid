@@ -1,5 +1,6 @@
 @import "~animate.css";
 @import "styles.conf";
+
 *{
   font-family: $fontMain;
   box-sizing: border-box;
@@ -36,7 +37,7 @@ body{
 }
 
 
-button, input[type="button"]{
+button, input[type="button"], .button{
   background-color: $colorDark;
   box-shadow: 1px 1px 3px 1px transparentize($colorMidDark, 0.5);
   color: $colorLight;
@@ -45,16 +46,28 @@ button, input[type="button"]{
   padding: 5px;
   margin: 5px;
   outline: none !important;
+
+  &.button-icon{
+    font-size: 35px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+  }
   &.enfasis{
-    background-color:$colorEnfasis;
+    color: $colorLightest;
+    background-color: $colorEnfasis;
   }
   &.success{
+    color: $colorLightest;
     background-color:$colorSuccess;
   }
   &.warning{
+    color: $colorShadowest;
     background-color:$colorWarning;
   }
   &.danger{
+    color: $colorLightest;
     background-color:$colorDanger;
   }
   &:hover{

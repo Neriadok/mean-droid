@@ -4,7 +4,8 @@ export interface ActionButtonComponentDefinition {
     key: string;
     type: 'danger' | 'warning' | 'success' | 'enfasis' | 'default';
     action: (args: any) => void;
-    label: string;
+    label?: string;
+    icon?: string;
 }
 
 @Component({
@@ -15,6 +16,7 @@ export interface ActionButtonComponentDefinition {
 export class ActionButtonComponent {
     @Input() definition: ActionButtonComponentDefinition;
     @Input() args: any;
+    @Input() classes: Array<string>;
 
     public launchAction() {
         this.definition.action(this.args);
